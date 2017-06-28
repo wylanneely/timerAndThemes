@@ -13,23 +13,48 @@ class AlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    let alarm = Alarm()
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var datePIcker: UIDatePicker!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var alarmButton: UIButton!
+   
+    // MARK: Private
+    
+    private func armAlarm() {
+        alarm.arm(datePIcker.date)
+        switchToAlarmSetView()
     }
-    */
+    
+    private func switchToAlarmSetView() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .long
+        
+        messageLabel.text = "Your alarm is set!"
+        
+        if let date = alarm.alarmDate {
+            dateLabel.text = dateFormatter.string(from: date)
+            datePIcker.date = date
+        } else {
+            dateLabel.text = ""
+        }
+        
+        alarmButton.setTitle("Cancel Alarm", for: UIControlState())
+        datePIcker.isUserInteractionEnabled = false
+    }
+    
+    private dynamic func switchToAlarmNotSetView(_ notification: Notification?) {
+        alarm.cancel()
+        messageLabel.text = "Your alarm is not set."
+        dateLabel.text = ""
+        alarmButton.setTitle("Set Alarm", for: UIControlState())
+        datePIcker.minimumDate = Date()
+        datePIcker.date = Date()
+        datePIcker.isUserInteractionEnabled = true
+    }
 
 }

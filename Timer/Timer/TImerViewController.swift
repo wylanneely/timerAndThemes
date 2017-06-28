@@ -13,9 +13,22 @@ class TImerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegatesDatasources()
+          NotificationCenter.default.addObserver(self, selector: #selector(updateTimerBasedViews(_:)), name: .secondTickNotification, object: timer)
+        NotificationCenter.default.addObserver(self, selector: #selector(timerComplete(_:)), name: .timerCompleteNotification, object: timer)
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func startButonTapped(_ sender: Any) {
+        toggleTimer()
         
     }
     
+    @IBAction func pauseButtonTapped(_ sender: Any) {
+        timer.togglePause()
+    }
+    
+    //MARK: - Properties
     var timer = Timer()
     
     //MARK: - Outlets
@@ -130,6 +143,7 @@ class TImerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         hoursPickerView.dataSource = self
         minutesPickerView.dataSource = self
         minutesPickerView.delegate = self
+    
     }
     
 }

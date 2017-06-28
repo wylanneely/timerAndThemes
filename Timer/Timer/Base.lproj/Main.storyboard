@@ -73,6 +73,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Alarm" id="Vxy-OC-wIa"/>
+                    <connections>
+                        <outlet property="alarmButton" destination="bf5-GQ-l38" id="u24-KN-B3N"/>
+                        <outlet property="dateLabel" destination="46s-0I-ZSz" id="In0-a9-SXV"/>
+                        <outlet property="datePIcker" destination="794-gV-ybE" id="yMI-6A-VPA"/>
+                        <outlet property="messageLabel" destination="c2s-j8-8LM" id="4cL-4p-DlV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZn-bf-Xii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,7 +106,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-Hs-qFf">
                                         <rect key="frame" x="0.0" y="2" width="375" height="184"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bve-G5-fZ9">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bve-G5-fZ9">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
                                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="80"/>
                                                 <nil key="textColor"/>
@@ -110,23 +116,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
                                                 <subviews>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0u-yv-SWY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="184"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="184"/>
                                                     </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGn-Fl-zOb">
-                                                        <rect key="frame" x="94" y="0.0" width="93.5" height="184"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blU-qf-nQv">
-                                                        <rect key="frame" x="187.5" y="0.0" width="94" height="184"/>
+                                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="184"/>
                                                     </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKd-Sc-h9O">
-                                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="184"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -151,10 +145,16 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgi-bn-PCW">
                                                         <rect key="frame" x="0.0" y="77" width="207" height="30"/>
                                                         <state key="normal" title="Pause"/>
+                                                        <connections>
+                                                            <action selector="pauseButtonTapped:" destination="Azf-Vi-r66" eventType="touchUpInside" id="yyS-Ka-cIm"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8T-9O-T0F">
                                                         <rect key="frame" x="207" y="77" width="168" height="30"/>
                                                         <state key="normal" title="Start"/>
+                                                        <connections>
+                                                            <action selector="startButonTapped:" destination="Azf-Vi-r66" eventType="touchUpInside" id="GXi-Ci-icW"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
